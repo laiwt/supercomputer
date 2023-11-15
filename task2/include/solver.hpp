@@ -58,7 +58,7 @@ private:
         for (int i = 1; i < g.N; i++) {
             for (int j = 1; j < g.N; j++) {
                 for (int k = 1; k < g.N; k++) {
-                    u[1][i][j][k] = u[0][i][j][k] + g.tau * g.tau / 2.0 * laplace(u[0], i, j, k);
+                    u[1][i][j][k] = u[0][i][j][k] + f.a_2 * g.tau * g.tau / 2.0 * laplace(u[0], i, j, k);
                 }
             }
         }
@@ -118,7 +118,7 @@ public:
             for (int i = 1; i < g.N; i++) {
                 for (int j = 1; j < g.N; j++) {
                     for (int k = 1; k < g.N; k++) {
-                        u[step % 3][i][j][k] = 2 * u[(step + 2) % 3][i][j][k] - u[(step + 1) % 3][i][j][k] + g.tau * g.tau * laplace(u[(step + 2) % 3], i, j, k);
+                        u[step % 3][i][j][k] = 2 * u[(step + 2) % 3][i][j][k] - u[(step + 1) % 3][i][j][k] + f.a_2 * g.tau * g.tau * laplace(u[(step + 2) % 3], i, j, k);
                     }
                 }
             }
